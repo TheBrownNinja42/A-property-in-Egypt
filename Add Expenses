@@ -1,0 +1,38 @@
+import datetime
+
+# List to store the expenses
+expenses = []
+
+def add_expense(category, amount, date):
+    expense = {
+        'category': category,
+        'amount': amount,
+        'date': date
+    }
+    expenses.append(expense)
+
+def main():
+        print("Add a new expense")
+        category = input("Enter category: ")
+        amount = float(input("Enter amount: "))
+        date_str = input("Enter date (YYYY-MM-DD): ")
+        
+        try:
+            date = datetime.datetime.strptime(date_str, "%Y-%m-%d")
+        except ValueError:
+            print("Invalid date format. Please enter the date in YYYY-MM-DD format.")
+            continue
+        
+        add_expense(category, amount, date)
+        print("Expense added successfully!\n")
+        
+        another = input("Do you want to add another expense? (yes/no): ").strip().lower()
+        if another != 'yes':
+            break
+
+    print("\nAll expenses:")
+    for expense in expenses:
+        print(expense)
+
+if __name__ == "__main__":
+    main()
