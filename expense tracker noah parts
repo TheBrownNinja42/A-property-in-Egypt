@@ -1,0 +1,50 @@
+expenses_list = [] 
+organized_expenses = {}
+
+def add_expenses(category, amount, date):
+    expense = {
+        'Category': category,
+        'Amount': amount,
+        'Date': date
+    }
+    expenses_list.append(expense)
+
+def price_check(x):
+    try:
+        price = float(x)
+        return True
+    except ValueError:
+        return False
+
+def get_monthly_summary():
+    monthly_expenses = {}
+    for expense in expenses_list:
+        date_parts = expense['Date'].split('/')  # Assuming date format MM/DD/YYYY
+        if len(date_parts) >= 2:
+            month_year = f"{date_parts[0]}/{date_parts[-1]}"
+            if month_year not in monthly_expenses:
+                monthly_expenses[month_year] = {
+                    'total': 0,
+                    'categories': {}
+                }
+            monthly_expenses[month_year]['total'] += float(expense['Amount'])
+            category = expense['Category']
+            if category not in monthly_expenses[month_year]['categories']:
+                monthly_expenses[month_year]['categories'][category] = 0
+            monthly_expenses[month_year]['categories'][category] += float(expense['Amount'])
+    
+    return monthly_expenses
+
+
+  
+                    
+        elif choice == "5":
+            monthly_summary = get_monthly_summary()
+            for month, data in monthly_summary.items():
+                print(f"\nMonth: {month}")
+                print(f"Total expenses: ${data['total']:.2f}")
+                print("Breakdown by category:")
+                for category, amount in data['categories'].items():
+                    print(f"  {category}: ${amount:.2f}")
+
+expense_tracker()
