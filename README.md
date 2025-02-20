@@ -1,4 +1,4 @@
-Welcome to our Expense Tracker! This was made by Kelvin, Zack, Noah, and Marc Floyd. Just open the code onto a development environment and play the code!
+Welcome to our Expense Tracker! This was made by Kelvin, Zack, Noah, and Marc Floyd. Just open the code onto a development environment and play the code! Our code for this project is in "Final_Expense_Tracker.py".
 
 
 Kelvin did the add expenses portion.
